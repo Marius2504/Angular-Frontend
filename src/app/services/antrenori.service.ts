@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AntrenoriService {
+export class AntrenoriService { 
   public url ='https://localhost:44306/api/Antrenor';
 
   constructor(

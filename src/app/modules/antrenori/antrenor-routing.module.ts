@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AntrenorComponent } from './antrenor/antrenor.component';
 import { AntrenoriComponent } from './antrenori/antrenori.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [

@@ -8,15 +8,16 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { AntrenorComponent } from './antrenor/antrenor.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
   declarations: [
     AntrenoriComponent,
     ChildComponent,
-    AntrenorComponent
+    AntrenorComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +26,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatIconModule,
     MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
   ]
 })
 export class AntrenoriModule { }
