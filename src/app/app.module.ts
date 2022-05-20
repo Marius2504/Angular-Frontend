@@ -12,13 +12,15 @@ import { NavbarComponent } from './modules/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { SettDirective } from './modules/antrenori/sett.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    SettDirective
   ],
   imports: [
     BrowserModule,

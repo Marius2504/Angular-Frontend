@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="check(key); else cond1" appSett >
     <div class="name">Logare</div>
     <form [formGroup]="loginForm">
         <mat-form-field appearance="outline">
@@ -7,11 +7,11 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Parola</mat-label>
-            <input matInput placeholder="Parola" formControlName="parola" />
+            <input matInput placeholder="Parola" formControlName="password" />
         </mat-form-field>
     </form>
     <button mat-raised-button (click)="login()">
         Login
     </button>
-    
 </div>
+<ng-template #cond1>Esti deja logat {{key}} fdsf</ng-template>

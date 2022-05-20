@@ -12,7 +12,7 @@ export class LoginService {
    }
   public login(cont:object):Observable<any>
   {
-    return this.http.post(`${this.url}/fromBody`,cont);
+    return this.http.post(`${this.url}`,cont);
   }
 
 }

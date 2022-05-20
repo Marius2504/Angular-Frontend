@@ -1,8 +1,4 @@
-<button mat-raised-button (click)="logout()">
-    logout
-</button>
-
-<div>{{messageOut}}</div>
+<span>{{messageOut}}</span>
 <div class="container">
     <div class="from-section">
     </div>
@@ -19,7 +15,7 @@
     </ng-container>
     <ng-container matColumnDef="nume">
         <th mat-header-cell *matHeaderCellDef> Nume</th>
-        <td mat-cell *matCellDef="let element">{{element.nume}}</td>
+        <td mat-cell *matCellDef="let element">{{element.nume|uppercase}}</td>
     </ng-container>
 
     <ng-container matColumnDef="varsta">
@@ -69,10 +65,9 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
 </table>
-
 <button mat-raised-button (click)="addAntrenor()">
     Add data
 </button>
+
 <app-child [message]="currentMessage" (newMessage)="addNewItem($event)"></app-child>

@@ -52,14 +52,12 @@ export class DialogEditAntrenorComponent implements OnInit {
 
   public save():void
   {
-    console.log(this.antrenorForm.value);
     this.antrenoriService.createAntrenor(this.antrenorForm.value).subscribe((result)=>{
-      console.log(result);
-      this.dialog.close(result);
     },
     (error)=>{
       console.log(error);
     });
+    window.location.reload();
   }
 
   public updateAntrenor():void

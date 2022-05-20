@@ -9,7 +9,7 @@ export class ChildComponent implements OnInit {
   @Input() message= '';
   @Output() newMessage = new EventEmitter<any>();
 
-  constructor() { console.log(this.message); }
+  constructor() {}
 
   ngOnInit(): void {
   }

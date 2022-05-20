@@ -14,8 +14,8 @@ import { DialogEditAntrenorComponent } from 'src/app/modules/shared/dialog-edit-
 export class AntrenoriComponent implements OnInit, OnDestroy {
   public subscription: Subscription;
   public message: string;
-  public messageOut='g';
-  public currentMessage = "Wow first message I have seen";
+  public messageOut='Mesaj initial';
+  public currentMessage = "Mesaj transmis din parent component";
   public antrenori: [] = [];
   public displayedColumns=["id","nume","varsta","telefon","email","optiuni","edit","delete","profil"];
 
@@ -30,7 +30,6 @@ export class AntrenoriComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log("In antrenori");
     this.subscription = this.dataService.currentMessage.subscribe((message) => this.message = message);
     this.getAntrenori();
   }
@@ -69,11 +68,13 @@ export class AntrenoriComponent implements OnInit, OnDestroy {
     const dialog=this.dialog.open(DialogEditAntrenorComponent, dialogConfig);
     dialog.afterClosed().subscribe((result)=>{
       this.antrenori = result;
+      window.location.reload();
     },
     (error)=>
     {
       console.log(error);
     });
+    
   }
 
   public deleteAntrenor(id:Number):void{
@@ -92,6 +93,7 @@ export class AntrenoriComponent implements OnInit, OnDestroy {
     (error) =>{
       console.log(error);
     })
+    window.location.reload();
   }
 
   

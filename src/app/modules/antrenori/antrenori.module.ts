@@ -17,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
   declarations: [
     AntrenoriComponent,
     ChildComponent,
-    AntrenorComponent,
+    AntrenorComponent
   ],
   imports: [
     CommonModule,

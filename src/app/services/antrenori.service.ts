@@ -47,8 +47,8 @@ export class AntrenoriService {
             .set('Content-Type','application/json'),
           body: antrenor
        }*/
-    console.log(antrenor);
-    return this.http.post(`${this.url}/fromBody`,antrenor);
+     this.http.post(`${this.url}/fromBody`,antrenor);
+     return this.getAllAntrenori();
   }
 
   public deleteAnt(antrenor:object): Observable<any>

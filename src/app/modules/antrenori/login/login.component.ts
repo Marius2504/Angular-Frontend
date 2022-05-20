@@ -5,6 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 
+
 //import { ChildComponent } from 'src/app/modules/antrenori/child/child.component';
 //<app-child [message]="parentMessage"()></app-child>
 
@@ -16,12 +17,13 @@ import { LoginService } from 'src/app/services/login.service';
 export class LoginComponent implements OnInit,OnDestroy {
   public loginForm: FormGroup = new FormGroup({
     email: new FormControl(''),
-    parola:new FormControl('')
+    password:new FormControl('')
 });
 
   public subscription: Subscription;
   public message:string;
   public parentMessage:string;
+  public key = localStorage.getItem('key');
 
   constructor(
     private router:Router,
@@ -45,14 +47,15 @@ export class LoginComponent implements OnInit,OnDestroy {
 
   public login():void
   {
+    console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).subscribe((result)=>{
-      console.log(result);
-      localStorage.setItem('role','Admin');
+      localStorage.setItem('key',JSON.stringify(result));
+      this.router.navigate(['/antrenori']);
     },
     (error)=>{
       console.log(error);
     });
-    //this.router.navigate(['/antrenor']);
+    //window.location.reload();
   }
   public receiveMessage(event: any):void
   {
@@ -69,6 +72,12 @@ export class LoginComponent implements OnInit,OnDestroy {
   }
   get email(): AbstractControl{
     return this.loginForm.get('email') as FormGroup;
+  }
+  check(val:any):boolean
+  {
+    if(val == null)
+        return true;
+    return false;
   }
 
 }

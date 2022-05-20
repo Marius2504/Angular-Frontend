@@ -6,10 +6,16 @@
         <ul class="nav navbar-nav">
             <li><a href="/login">Home</a></li>
             <li><a href="/antrenori">Antrenors</a></li>
+            <li *ngIf="key"><a href="/users">Users</a></li>
         </ul>
-        <div class="last">
+        <div *ngIf="check(key); else cond1" class="last">
             <button mat-raised-button (click)="login($event)" class="last " >Login</button>
         </div>
+        <ng-template #cond1>
+            <div class="last">
+                <button mat-raised-button (click)="logout($event)" class="last " >Logout</button>
+            </div>
+        </ng-template>
     </div>
 </div>
  
