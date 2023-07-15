@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './modules/antrenori/login/login.component';
+import { RegisterComponent } from './modules/register/register.component';
+import { LoginComponent } from './modules/trainers/login/login.component';
 
 const routes: Routes = [
+{ path:'',loadChildren:() => import('src/app/modules/trainers/trainers.module').then(m => m.TrainersModule)},
 {
     path:'login',
     component:LoginComponent
 },
 {
-  path:'',
-  loadChildren:() => import('src/app/modules/antrenori/antrenori.module').then(m => m.AntrenoriModule),
+  path:'register',
+  component:RegisterComponent
 }
 
 ];

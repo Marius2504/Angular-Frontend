@@ -2,27 +2,27 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
-import { AntrenoriService } from 'src/app/services/antrenori.service';
+import { TrainersService } from 'src/app/services/trainers.service';
 import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import { DialogEditAntrenorComponent } from 'src/app/modules/shared/dialog-edit-antrenor/dialog-edit-antrenor.component';
+import { DialogEditTrainerComponent } from 'src/app/modules/shared/dialog-edit/dialog-edit-trainer.component';
 
 @Component({
-  selector: 'app-antrenori',
-  templateUrl: './antrenori.component.html',
-  styleUrls: ['./antrenori.component.scss']
+  selector: 'app-info',
+  templateUrl: './info.component.html',
+  styleUrls: ['./info.component.scss']
 })
-export class AntrenoriComponent implements OnInit, OnDestroy {
+export class InfoComponent implements OnInit, OnDestroy {
   public subscription: Subscription;
   public message: string;
   public messageOut='Mesaj initial';
   public currentMessage = "Mesaj transmis din parent component";
-  public antrenori: [] = [];
+  public trainers: [] = [];
   public displayedColumns=["id","nume","varsta","telefon","email","optiuni","edit","delete","profil"];
 
   constructor(
     private router: Router,
     private dataService: DataService,
-    private antrenoriService: AntrenoriService,
+    private trainersService: TrainersService,
     private dialog: MatDialog
   ) {
     this.message = '';
@@ -31,15 +31,15 @@ export class AntrenoriComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.dataService.currentMessage.subscribe((message) => this.message = message);
-    this.getAntrenori();
+    this.getTrainers();
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-  public getAntrenori(): void {
-    this.antrenoriService.getAllAntrenori().subscribe((result)=>{
+  public getTrainers(): void {
+    this.trainersService.getAllTrainers().subscribe((result)=>{
       console.log(result);
-      this.antrenori = result;
+      this.trainers = result;
     },
     (error)=>
     {
@@ -48,26 +48,26 @@ export class AntrenoriComponent implements OnInit, OnDestroy {
   }
 
   public logout(): void {
-    this.dataService.changeMessage('hello from antrenor');
+    this.dataService.changeMessage('hello from trainer');
     localStorage.setItem('role', 'anonim');
     this.router.navigate(['/login']);
   }
 
-  public addAntrenor():void{
-    this.editAntrenor();
+  public addTrainer():void{
+    this.editTrainer();
   }
 
-  public editAntrenor(antrenor?:object):void{
+  public editTrainer(trainer?:object):void{
     const obj = {
-      antrenor
+      trainer
     }
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width='550px';
     dialogConfig.height='750px';
     dialogConfig.data = obj;
-    const dialog=this.dialog.open(DialogEditAntrenorComponent, dialogConfig);
+    const dialog=this.dialog.open(DialogEditTrainerComponent, dialogConfig);
     dialog.afterClosed().subscribe((result)=>{
-      this.antrenori = result;
+      this.trainers = result;
       window.location.reload();
     },
     (error)=>
@@ -77,18 +77,18 @@ export class AntrenoriComponent implements OnInit, OnDestroy {
     
   }
 
-  public deleteAntrenor(id:Number):void{
-    this.antrenoriService.deleteAntrenor(id).subscribe((result)=>{
-      this.antrenori=result;
+  public deleteTrainer(id:Number):void{
+    this.trainersService.deleteTrainer(id).subscribe((result)=>{
+      this.trainers=result;
     },
     (error)=>
     {
       console.log(error);
     });
   }
-  public deleteAnt(antrenor : object):void{
-    this.antrenoriService.deleteAnt(antrenor).subscribe((result)=>{
-      this.antrenori = result;
+  public deleteAnt(trainer : object):void{
+    this.trainersService.deleteAnt(trainer).subscribe((result)=>{
+      this.trainers = result;
     },
     (error) =>{
       console.log(error);
@@ -98,8 +98,8 @@ export class AntrenoriComponent implements OnInit, OnDestroy {
 
   
 
-  public profilAntrenor(id:number):void{
-    this.router.navigate(['/antrenor',id]);
+  public profilTrainer(id:number):void{
+    this.router.navigate(['/trainer',id]);
   }
   public addNewItem(value:any)
   {

@@ -5,11 +5,14 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="/login">Home</a></li>
-            <li><a href="/antrenori">Antrenors</a></li>
+            <li><a href="/trainers">Trainers</a></li>
             <li *ngIf="key"><a href="/users">Users</a></li>
         </ul>
         <div *ngIf="check(key); else cond1" class="last">
             <button mat-raised-button (click)="login($event)" class="last " >Login</button>
+        </div>
+        <div *ngIf="check(key)" class="last">
+            <button mat-raised-button routerLink="/register" class="last " >Register</button>
         </div>
         <ng-template #cond1>
             <div class="last">
@@ -18,4 +21,5 @@
         </ng-template>
     </div>
 </div>
+
  

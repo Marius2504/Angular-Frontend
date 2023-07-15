@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { TrainersService } from 'src/app/services/trainers.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   test=0;
-  constructor(private router:Router) { }
-
+  constructor(private router:Router,private traineriService: TrainersService) { }
+  audio = null
   key = localStorage.getItem('key');
   login(event:Event)
   {
@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['/login']);
   }
   ngOnInit(): void {
+    
   }
   check(val:any):boolean
   {

@@ -3,7 +3,7 @@ import { SettDirective } from './sett.directive';
 
 describe('SettDirective', () => {
   it('should create an instance', () => {
-    const directive = new SettDirective();
+    const directive = null;
     expect(directive).toBeTruthy();
   });
 });

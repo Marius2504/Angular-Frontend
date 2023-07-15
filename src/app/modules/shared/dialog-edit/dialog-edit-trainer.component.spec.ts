@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AntrenoriComponent } from './antrenori.component';
+import { DialogEditTrainerComponent } from './dialog-edit-trainer.component';
 
-describe('AntrenoriComponent', () => {
-  let component: AntrenoriComponent;
-  let fixture: ComponentFixture<AntrenoriComponent>;
+describe('DialogEditTrainerComponent', () => {
+  let component: DialogEditTrainerComponent;
+  let fixture: ComponentFixture<DialogEditTrainerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AntrenoriComponent ]
+      declarations: [ DialogEditTrainerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AntrenoriComponent);
+    fixture = TestBed.createComponent(DialogEditTrainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

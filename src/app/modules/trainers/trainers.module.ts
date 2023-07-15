@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AntrenoriComponent } from './antrenori/antrenori.component';
-import { AntrenorRoutingModule } from './antrenor-routing.module';
+import { InfoComponent } from './info/info.component';
+import { TrainerRoutingModule } from './trainer-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { ChildComponent } from './child/child.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { AntrenorComponent } from './antrenor/antrenor.component';
+import { TrainerComponent } from './trainer/trainer.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,13 +15,13 @@ import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
-    AntrenoriComponent,
+    InfoComponent,
     ChildComponent,
-    AntrenorComponent
+    TrainerComponent
   ],
   imports: [
     CommonModule,
-    AntrenorRoutingModule,
+    TrainerRoutingModule,
     MatButtonModule,
     MatTableModule,
     MatIconModule,
@@ -31,4 +31,4 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule
   ]
 })
-export class AntrenoriModule { }
+export class TrainersModule { }

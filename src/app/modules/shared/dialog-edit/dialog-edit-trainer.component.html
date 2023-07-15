@@ -2,29 +2,29 @@
     <h1 class="title">
         {{title}}
     </h1>
-    <form [formGroup]="antrenorForm" class="form">
+    <form [formGroup]="trainerForm" class="form">
         <mat-form-field appearance="outline">
-            <mat-label>Nume</mat-label>
-            <input matInput placeholder="Nume antrenor" formControlName="nume" />
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Nume trainer" formControlName="name" />
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Age</mat-label>
-            <input matInput placeholder="Varsta antrenor" formControlName="varsta" />
+            <input matInput placeholder="Varsta trainer" formControlName="age" />
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Phone</mat-label>
-            <input matInput placeholder="Telefon antrenor" formControlName="telefon" />
+            <input matInput placeholder="Telefon trainer" formControlName="phone" />
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Email antrenor" formControlName="email" />
+            <input matInput placeholder="Email trainer" formControlName="email" />
         </mat-form-field>
 
     </form>
-    <button mat-raised-button (click)="data ? updateAntrenor():save()">
+    <button mat-raised-button (click)="data ? updateTrainer():save()">
         Save
     </button>
 </div>

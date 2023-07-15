@@ -2,68 +2,62 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { Trainer } from '../modules/entities/trainer';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AntrenoriService { 
-  public url ='https://localhost:44306/api/Antrenor';
-
+export class TrainersService { 
+  public url ='https://localhost:44306/api/Trainer';
+  
   constructor(
     public http:HttpClient,
   ) { }
+  
 
-  public getAllAntrenori():Observable<any>
+  public getAllTrainers():Observable<any>
   {
     return this.http.get(this.url);
   }
 
-  public GetAntrenorByName(name:string):Observable<any>
+  public GetTrainerByName(name:string):Observable<any>
   {
     return this.http.get(`${this.url}/${name}`);
   }
 
-  public GetAntrenorById(id:Number):Observable<any>
+  public GetTrainerById(id:Number):Observable<any>
   {
     return this.http.get(`${this.url}/byId/${id}`);
   }
-  public deleteAntrenor(id:Number): Observable<any>
+  public deleteTrainer(id:Number): Observable<any>
   {
-    
     const httpOptions = {
       headers: new HttpHeaders()
       .set("Access-Control-Allow-Origin",'http://localhost:4200'),
     }
-    /*
-    return this.http.delete<any>(this.url, httpOptions);
-    */
    return this.http.delete<any>(`${this.url}/${id}`,httpOptions)
   }
 
-  public createAntrenor(antrenor:object): Observable<any>
+  public createTrainer(trainer:object): Observable<any>
   {
-      /* const httpOptions = {
-          headers: new HttpHeaders()
-            .set('Content-Type','application/json'),
-          body: antrenor
-       }*/
-     this.http.post(`${this.url}/fromBody`,antrenor);
-     return this.getAllAntrenori();
+     this.http.post(`${this.url}/fromBody`,trainer);
+     return this.getAllTrainers();
   }
 
-  public deleteAnt(antrenor:object): Observable<any>
+  public deleteAnt(trainer:object): Observable<any>
   {
     const httpOptions = {
          headers: new HttpHeaders()
         .set('Content-Type','application/json').set('Access-Control-Allow-Origin', 'http://localhost:4200'),
-         body: antrenor
+         body: trainer
        };
     return this.http.delete<any>(this.url,httpOptions);
     
   }
 
-  public updateAntrenor(antrenor:object): Observable<any>
+  public updateTrainer(trainer:Trainer): Observable<any>
   {
-    return this.http.put(this.url,antrenor);
+    return this.http.put(this.url,trainer);
   }
+  
 }
