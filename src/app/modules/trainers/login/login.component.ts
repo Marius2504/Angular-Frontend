@@ -16,6 +16,7 @@ import { Login } from '../../entities/login';
 })
 export class LoginComponent implements OnInit,OnDestroy {
   user:Login = new Login();
+  public messagePython = ""
 
   public subscription: Subscription;
   public message:string;
@@ -36,6 +37,9 @@ export class LoginComponent implements OnInit,OnDestroy {
 
   ngOnInit() {
     this.subscription = this.dataService.currentMessage.subscribe((message)=>this.message = message);
+    this.loginService.getMessage().subscribe(resp=>{
+      this.messagePython = resp;
+    })
   }
   ngOnDestroy(): void {
       this.subscription.unsubscribe();
